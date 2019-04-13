@@ -3,7 +3,9 @@ class Pomodoro {
     this.minutes = 25; 
     this.seconds = 1500;
     this.timer = this.timer.bind(this);
+    this.clock = null;
     this.startTimer = this.startTimer.bind(this);
+    this.stopTimer = this.stopTimer.bind(this);
     this.updateHtml = this.updateHtml.bind(this);
   }
 
@@ -13,7 +15,11 @@ class Pomodoro {
   }
 
   startTimer() {
-    setInterval(this.timer, 1000);
+    this.clock = setInterval(this.timer, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.clock);
   }
 
   updateHtml() {
@@ -27,7 +33,12 @@ class Pomodoro {
 let pomodoro = new Pomodoro();
 
 const startBtn = document.querySelector('#start');
+const stopBtn = document.querySelector('#stop');
 
 startBtn.addEventListener('click', () => {
   pomodoro.startTimer();
+});
+
+stopBtn.addEventListener('click', () => {
+  pomodoro.stopTimer();
 });
