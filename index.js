@@ -1,5 +1,6 @@
 class Pomodoro {
   constructor() {
+    this.breakMins = 5;
     this.minutes = 25; 
     this.seconds = 1500;
     this.timer = this.timer.bind(this);
@@ -8,6 +9,7 @@ class Pomodoro {
     this.stopTimer = this.stopTimer.bind(this);
     this.updateHtml = this.updateHtml.bind(this);
     this.restartTimer = this.restartTimer.bind(this);
+    this.updateWorkInterval = this.updateWorkInterval.bind(this);
   }
 
   timer() {
@@ -36,6 +38,13 @@ class Pomodoro {
     let secs = this.seconds % 60;
     timer.textContent = `${mins}:${secs < 10 ? '0' + secs : secs}`;
   }
+
+  updateWorkInterval() {
+    let workMins = document.getElementById('work-timer').value;
+    this.minutes = parseInt(workMins);
+    this.seconds = parseInt(workMins * 60);
+    this.updateHtml();
+  }
 }
 
 let pomodoro = new Pomodoro();
@@ -43,6 +52,7 @@ let pomodoro = new Pomodoro();
 const startBtn = document.querySelector('#start');
 const stopBtn = document.querySelector('#stop');
 const restartBtn = document.querySelector('#restart');
+const workInterval = document.querySelector('#work-timer');
 
 startBtn.addEventListener('click', () => {
   pomodoro.startTimer();
@@ -55,3 +65,9 @@ stopBtn.addEventListener('click', () => {
 restartBtn.addEventListener('click', () => {
   pomodoro.restartTimer();
 });
+
+workInterval.addEventListener('change', () => {
+  pomodoro.updateWorkInterval();
+});
+
+setInterval(pomodoro.updateHtml, 50);
