@@ -36,7 +36,9 @@
   margin: 0 auto;
 }
 
-.startPauseContainer, .timerContainer {
+.startPauseContainer,
+.timerContainer,
+.preferencesRestartContainer  {
   display: flex;
   justify-content: center;
 }
