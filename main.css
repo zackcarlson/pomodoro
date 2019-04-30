@@ -1,0 +1,42 @@
+#customize, #start, #pause, #restart {
+  border: none;
+  padding: none;
+  cursor: pointer;
+}
+
+#pause {
+  display: none;
+}
+
+#start {
+  width: 74px;
+  height: 74px;
+  border-style: solid;
+  border-width: 37px;
+  border-color: #202020;
+  box-sizing: border-box;
+  border-width: 37px 0px 37px 74px;
+  border-color: transparent transparent transparent #202020;
+  transition: border-width 800ms all ease;
+}
+
+#pause {
+  width: 74px;
+  height: 74px;
+  border-style: solid;
+  border-width: 37px;
+  border-color: #202020;
+  border-style: double;
+  border-width: 0px 0px 0px 37px;
+  transition: border-width 800ms all ease;
+}
+
+#timer {
+  font-size: 10rem;
+  margin: 0 auto;
+}
+
+.startPauseContainer, .timerContainer {
+  display: flex;
+  justify-content: center;
+}
