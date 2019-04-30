@@ -1,3 +1,5 @@
+html,body,svg { height:100% }
+
 #customize, #start, #pause, #restart {
   border: none;
   padding: none;
@@ -41,4 +43,34 @@
 .preferencesRestartContainer  {
   display: flex;
   justify-content: center;
+}
+
+#countdown {
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+svg {
+  width: 70%;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg #progress-overlay {
+  stroke-dasharray: 307.87582;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-width: 2;
+  stroke: black;
+  fill: none;
+  
+}
+/* animation: countdown 10s linear infinite forwards; */
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 307.87582;
+  }
 }
