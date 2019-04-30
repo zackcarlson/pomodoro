@@ -6,42 +6,72 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./main.css">
 </head>
 
 <body>
-  <div id="timer">
-    25:00
+  <div class="timerContainer">
+    <div id="timer">
+      25:00
+    </div>
   </div>
-  <button id="start">
-    Start
-  </button>
-  <button id="stop">
-    Stop
-  </button>
+  <div class="startPauseContainer">
+    <button id="start">
+      <!-- <i class="fas fa-play" style="color: red"></i> -->
+    </button>
+    <button id="pause">
+      <!-- <i class="fas fa-pause" style="color: red"></i> -->
+    </button>
+  </div>
   <button id="restart">
-    Restart
+    <i class="fas fa-undo"></i>
   </button>
-  <button id="customize">
-    Customize
+
+  <button type="button" class="btn btn-primary" id="customize" data-toggle="modal" data-target="#customizeModal" style="background-color: transparent">
+    <i class="fas fa-cog" style="color: black"></i>
   </button>
-  <form>
-    <div>
-      <label for="work-timer">
-        Work Interval
-      </label>
-      <input type="number" id="work-timer" step=5 min="5" max="60" value="25"></input>
+
+  <!-- Modal -->
+  <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Preferences</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="work-timer" class="col-auto col-form-label">Work Interval</label>
+              <div class="col-3">
+                <input class="form-control" type="number" step=5 min="5" max="60" value="25" id="work-timer">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="break-timer" class="col-auto col-form-label">Break Interval</label>
+              <div class="col-3">
+                <input class="form-control" type="number" step=5 min="5" max="60" value="25" id="break-timer">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save-intervals">Save changes</button>
+        </div>
+      </div>
     </div>
-    <div>
-      <label for="break-timer">
-        Break Interval
-      </label>
-      <input type="number" id="break-timer" step=5 min="5" max="30"></input>
-    </div>
-  </form>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="./index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
