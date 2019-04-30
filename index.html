@@ -12,6 +12,15 @@
 </head>
 
 <body>
+  <div class="preferencesRestartContainer">
+    <button id="restart">
+      <i class="fas fa-undo"></i>
+    </button>
+    <button type="button" class="btn btn-primary" id="customize" data-toggle="modal" data-target="#customizeModal" style="background-color: transparent">
+      <i class="fas fa-cog" style="color: black"></i>
+    </button>
+  </div>
+
   <div class="timerContainer">
     <div id="timer">
       25:00
@@ -25,13 +34,6 @@
       <!-- <i class="fas fa-pause" style="color: red"></i> -->
     </button>
   </div>
-  <button id="restart">
-    <i class="fas fa-undo"></i>
-  </button>
-
-  <button type="button" class="btn btn-primary" id="customize" data-toggle="modal" data-target="#customizeModal" style="background-color: transparent">
-    <i class="fas fa-cog" style="color: black"></i>
-  </button>
 
   <!-- Modal -->
   <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
