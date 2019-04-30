@@ -1,18 +1,26 @@
 class Pomodoro {
   constructor() {
     this.breakMins = 5;
+    this.workMins = 25;
     this.minutes = 25; 
     this.seconds = 1500;
     this.timer = this.timer.bind(this);
     this.clock = null;
+    this.workTimer = true;
+    this.breakTimer = false;
     this.startTimer = this.startTimer.bind(this);
-    this.stopTimer = this.stopTimer.bind(this);
+    this.pauseTimer = this.pauseTimer.bind(this);
     this.updateHtml = this.updateHtml.bind(this);
     this.restartTimer = this.restartTimer.bind(this);
-    this.updateWorkInterval = this.updateWorkInterval.bind(this);
+    this.updateInterval = this.updateInterval.bind(this);
   }
 
   timer() {
+    if (this.seconds === 0) {
+      this.workTimer = !this.workTimer;
+      this.breakTimer = !this.breakTimer;
+      this.updateInterval();
+    }
     this.seconds--;
     this.updateHtml();
   }
@@ -22,7 +30,7 @@ class Pomodoro {
     this.clock = setInterval(this.timer, 1000);
   }
 
-  stopTimer() {
+  pauseTimer() {
     clearInterval(this.clock);
   }
 
@@ -39,10 +47,19 @@ class Pomodoro {
     timer.textContent = `${mins}:${secs < 10 ? '0' + secs : secs}`;
   }
 
-  updateWorkInterval() {
-    let workMins = document.getElementById('work-timer').value;
-    this.minutes = parseInt(workMins);
-    this.seconds = parseInt(workMins * 60);
+  updateInterval() {
+    this.workMins = document.getElementById('work-timer').value;
+    this.breakMins = document.getElementById('break-timer').value;
+    let updateMins;
+
+    if (this.workTimer) {
+      updateMins = this.workMins;
+    } else {
+      updateMins = this.breakMins;
+    }
+
+    this.minutes = parseInt(updateMins);
+    this.seconds = parseInt(updateMins * 60);
     this.updateHtml();
   }
 }
@@ -50,24 +67,30 @@ class Pomodoro {
 let pomodoro = new Pomodoro();
 
 const startBtn = document.querySelector('#start');
-const stopBtn = document.querySelector('#stop');
+const pauseBtn = document.querySelector('#pause');
 const restartBtn = document.querySelector('#restart');
-const workInterval = document.querySelector('#work-timer');
+const saveIntervals = document.querySelector('#save-intervals');
 
 startBtn.addEventListener('click', () => {
   pomodoro.startTimer();
+  startBtn.style.display = 'none';
+  pauseBtn.style.display = 'inline-block';
 });
 
-stopBtn.addEventListener('click', () => {
-  pomodoro.stopTimer();
+pauseBtn.addEventListener('click', () => {
+  pomodoro.pauseTimer();
+  startBtn.style.display = 'inline-block';
+  pauseBtn.style.display = 'none';
 });
 
 restartBtn.addEventListener('click', () => {
   pomodoro.restartTimer();
+  startBtn.style.display = 'inline-block';
+  pauseBtn.style.display = 'none';
 });
 
-workInterval.addEventListener('change', () => {
-  pomodoro.updateWorkInterval();
+saveIntervals.addEventListener('click', () => {
+  pomodoro.updateInterval();
 });
 
 setInterval(pomodoro.updateHtml, 50);
