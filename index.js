@@ -45,6 +45,12 @@ class Pomodoro {
     let mins = Math.floor(this.seconds/60);
     let secs = this.seconds % 60;
     timer.textContent = `${mins}:${secs < 10 ? '0' + secs : secs}`;
+
+    if (this.workTimer) {
+      timer.style.color = "#fd5c63";
+    } else {
+      timer.style.color = "#8bf0ba";
+    }
   }
 
   updateInterval() {
