@@ -28,14 +28,18 @@
   </div>
   <div class="startPauseContainer">
     <button id="start">
-      <!-- <i class="fas fa-play" style="color: red"></i> -->
     </button>
     <button id="pause">
-      <!-- <i class="fas fa-pause" style="color: red"></i> -->
     </button>
   </div>
 
-  <!-- Modal -->
+  <div id="countdown">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle id="progress-shadow" cx="50" cy="50" r="49" fill="none" stroke="#e6e6e6" stroke-width="2" />
+      <circle id="progress-overlay" r="49" cx="50" cy="50"></circle>
+    </svg>
+  </div>
+  
   <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
