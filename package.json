@@ -1,0 +1,23 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "description": "Simple JS, HTML5, CSS3 Pomodoro timer.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zackcarlson/pomodoro.git"
+  },
+  "author": "Zack Carlson, Mealear Khiev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zackcarlson/pomodoro/issues"
+  },
+  "homepage": "https://github.com/zackcarlson/pomodoro#readme",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
