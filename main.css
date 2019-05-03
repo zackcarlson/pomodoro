@@ -22,6 +22,14 @@ html,body,svg { height:100% }
   transition: border-width 800ms all ease;
 }
 
+#start:focus, 
+#pause:focus,
+#restart:focus,
+.btn-primary:focus {
+  outline: 0!important;
+  box-shadow: none
+}
+
 #pause {
   width: 74px;
   height: 74px;
@@ -43,34 +51,4 @@ html,body,svg { height:100% }
 .preferencesRestartContainer  {
   display: flex;
   justify-content: center;
-}
-
-#countdown {
-  position: relative;
-  margin: auto;
-  text-align: center;
-}
-
-svg {
-  width: 70%;
-  transform: rotateY(-180deg) rotateZ(-90deg);
-}
-
-svg #progress-overlay {
-  stroke-dasharray: 307.87582;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  stroke-width: 2;
-  stroke: black;
-  fill: none;
-  
-}
-/* animation: countdown 10s linear infinite forwards; */
-@keyframes countdown {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: 307.87582;
-  }
 }
