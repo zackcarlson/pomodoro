@@ -21,7 +21,6 @@ class Pomodoro {
       this.breakTimer = !this.breakTimer;
       this.updateInterval();
     }
-   
     this.seconds--;
     this.updateHtml();
   }
@@ -29,15 +28,10 @@ class Pomodoro {
   startTimer() {
     clearInterval(this.clock);
     this.clock = setInterval(this.timer, 1000);
-    let progressBar = document.getElementById('progress-overlay');
-    progressBar.style.animation = ``;
-    progressBar.style.animation = `countdown ${this.seconds}s linear infinite forwards`;
   }
 
   pauseTimer() {
     clearInterval(this.clock);
-    let progressBar = document.getElementById('progress-overlay');
-    progressBar.style.animationPlayState = 'paused';
   }
 
   restartTimer() {
@@ -104,5 +98,3 @@ restartBtn.addEventListener('click', () => {
 saveIntervals.addEventListener('click', () => {
   pomodoro.updateInterval();
 });
-
-setInterval(pomodoro.updateHtml, 50);
